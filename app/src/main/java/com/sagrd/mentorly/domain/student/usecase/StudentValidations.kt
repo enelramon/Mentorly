@@ -8,7 +8,7 @@ data class StudentValidation(
 fun validateEmail(email: String): StudentValidation {
     return when {
         email.isBlank() -> StudentValidation(false, "Email requerido")
-        !email.contains("@") -> StudentValidation(false, "Debe contener '@'")
+        !email.trim().contains("@") -> StudentValidation(false, "Debe contener '@'")
         else -> StudentValidation(true)
     }
 }
