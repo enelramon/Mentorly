@@ -1,4 +1,8 @@
 package com.sagrd.mentorly.domain.student.model
 
-class Student {
-}
+data class Student(
+    val id: String,
+    val googleUserId: String,
+    val email: String,
+    val displayName: String
+)
