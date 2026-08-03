@@ -5,26 +5,53 @@ import androidx.credentials.CredentialManager
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
+import com.sagrd.mentorly.data.remote.api.CourseMentorlyApi
+import com.sagrd.mentorly.data.remote.dto.EnumMoshiAdapters
 import com.sagrd.mentorly.data.repository.AuthRepositoryImpl
 import com.sagrd.mentorly.domain.repository.AuthRepository
+import com.squareup.moshi.KotlinJsonAdapterFactory
+import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import retrofit2.Retrofit
+import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
+
+    @Provides
+    @Singleton
+    fun provideMoshi(): Moshi {
+        return Moshi.Builder()
+            .add(EnumMoshiAdapters())
+            .add(KotlinJsonAdapterFactory())
+            .build()
+    }
+
+    @Provides
+    @Singleton
+    fun provideCourseMentorlyApi(moshi: Moshi): CourseMentorlyApi {
+        val baseUrl = "https://mentorlyapi-ap2-f8gfgwh3efchgzfn.eastus2-01.azurewebsites.net/"
+        return Retrofit.Builder()
+            .baseUrl(baseUrl)
+            .addConverterFactory(MoshiConverterFactory.create(moshi))
+            .build()
+            .create(CourseMentorlyApi::class.java)
+    }
+
     @Provides
     @Singleton
     fun provideFirebaseAuth(): FirebaseAuth = Firebase.auth
 
     @Provides
     @Singleton
-    fun provideCredentialManager(@ApplicationContext context: Context):
-            CredentialManager = CredentialManager.create(context)
+    fun provideCredentialManager(@ApplicationContext context: Context): CredentialManager =
+        CredentialManager.create(context)
 
     @Provides
     @Singleton
