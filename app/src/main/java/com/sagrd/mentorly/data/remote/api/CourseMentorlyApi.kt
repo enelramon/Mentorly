@@ -18,10 +18,13 @@ import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.PUT
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface CourseMentorlyApi {
     @GET("api/Courses")
-    suspend fun getCourses(): Response<List<CourseDto>>
+    suspend fun getCourses(
+        @Query("publishedOnly") publishedOnly: Boolean
+    ): Response<List<CourseDto>>
 
     @GET("api/Courses/{id}")
     suspend fun getCourseDetail(
@@ -30,6 +33,7 @@ interface CourseMentorlyApi {
 
     @POST("api/Courses")
     suspend fun createCourse(
+        @Query("adminId") adminId: String,
         @Body dto: CreateCourseDto
     ): Response<CourseDto>
 
@@ -46,7 +50,7 @@ interface CourseMentorlyApi {
 
     @POST("api/Courses/{id}/units")
     suspend fun addUnit(
-        @Path("id") courdeId: String,
+        @Path("id") courseId: String,
         @Body dto: CreateUnitDto
     ): Response<CourseUnitDto>
 
