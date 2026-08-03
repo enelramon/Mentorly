@@ -6,5 +6,5 @@ import javax.inject.Inject
 class GetCourseByIdUseCase @Inject constructor(
     private val repository: CourseRepository
 ) {
-    operator fun invoke(id: String) = repository.getCourse(id)
+    operator fun invoke(id: String) = repository.getCourseDetail(id)
 }
