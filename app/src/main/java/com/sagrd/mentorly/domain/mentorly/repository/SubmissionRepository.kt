@@ -6,9 +6,9 @@ import kotlinx.coroutines.flow.Flow
 
 interface SubmissionRepository {
     fun getSubmissions(
-        enrollmentId: Int? = null,
-        activityId: Int? = null
+        enrollmentId: String? = null,
+        activityId: String? = null
     ): Flow<Resource<List<Submission>>>
-    fun getSubmissionDetail(id: Int): Flow<Resource<Submission>>
+    fun getSubmissionDetail(id: String): Flow<Resource<Submission>>
     fun saveSubmission(submission: Submission): Flow<Resource<Submission>>
 }

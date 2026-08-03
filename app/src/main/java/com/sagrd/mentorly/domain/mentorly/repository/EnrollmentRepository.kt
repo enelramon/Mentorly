@@ -6,9 +6,9 @@ import kotlinx.coroutines.flow.Flow
 
 interface EnrollmentRepository {
     fun getEnrollments(
-        studentId: Int? = null,
-        courseId: Int? = null
+        studentId: String? = null,
+        courseId: String? = null
     ): Flow<Resource<List<Enrollment>>>
-    fun getEnrollmentDetail(id: Int): Flow<Resource<Enrollment>>
+    fun getEnrollmentDetail(id: String): Flow<Resource<Enrollment>>
     fun saveEnrollment(enrollment: Enrollment): Flow<Resource<Enrollment>>
 }
