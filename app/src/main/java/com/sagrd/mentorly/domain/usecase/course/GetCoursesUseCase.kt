@@ -6,5 +6,7 @@ import javax.inject.Inject
 class GetCoursesUseCase @Inject constructor(
     private val repository: CourseRepository
 ) {
-    operator fun invoke() = repository.getCourses()
+    operator fun invoke(
+        publishedOnly: Boolean
+    ) = repository.getCourses(publishedOnly)
 }
