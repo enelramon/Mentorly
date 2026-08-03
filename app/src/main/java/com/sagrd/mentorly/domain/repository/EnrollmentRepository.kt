@@ -10,5 +10,5 @@ interface EnrollmentRepository {
         courseId: String? = null
     ): Flow<Resource<List<Enrollment>>>
     fun getEnrollmentDetail(id: String): Flow<Resource<Enrollment>>
-    fun saveEnrollment(enrollment: Enrollment): Flow<Resource<Enrollment>>
+    fun createEnrollment(enrollment: Enrollment): Flow<Resource<Enrollment>>
 }
