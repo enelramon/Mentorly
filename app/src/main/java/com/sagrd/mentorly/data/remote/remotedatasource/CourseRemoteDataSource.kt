@@ -48,9 +48,9 @@ class CourseRemoteDataSource @Inject constructor(
         }
     }
 
-    suspend fun createCourse(adminId: String, dto: CreateCourseDto): Result<CourseDto> {
+    suspend fun createCourse(dto: CreateCourseDto): Result<CourseDto> {
         return try {
-            val response = api.createCourse(adminId, dto)
+            val response = api.createCourse(dto)
             if (!response.isSuccessful) {
                 Result.failure(Exception("Error de red ${response.code()}"))
             } else {
