@@ -10,7 +10,9 @@ data class CreateCourseDto(
 data class UpdateCourseDto(
     val title: String,
     val description: String,
-    val requiredPeerReviews: Int
+    val requiredPeerReviews: Int,
+    val images: List<CreateCourseImageDto>?,
+    val units: List<CreateUnitDto>?
 )
 
 data class CourseDto(
