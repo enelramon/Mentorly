@@ -1,4 +1,4 @@
-package com.sagrd.mentorly.data.remote
+package com.sagrd.mentorly.data.remote.api
 
 import com.sagrd.mentorly.data.remote.dto.CourseDto
 import com.sagrd.mentorly.data.remote.dto.CreateCourseDto
@@ -11,7 +11,7 @@ import retrofit2.http.POST
 import retrofit2.http.PUT
 import retrofit2.http.Path
 
-interface MentorlyApi {
+interface CourseMentorlyApi {
     @GET("api/Courses")
     suspend fun getCourses(): Response<List<CourseDto>>
 
