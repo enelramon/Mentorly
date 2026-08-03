@@ -11,6 +11,6 @@ data class Enrollment(
     val attemptNumber: Int,
     val startedAt: String,
     val expiresAt: String,
-    val status: String,
+    val status: Int,
     val certificateUrl: String? = null
 )

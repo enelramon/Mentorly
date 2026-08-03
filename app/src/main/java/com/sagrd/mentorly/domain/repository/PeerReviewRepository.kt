@@ -14,6 +14,11 @@ interface PeerReviewRepository {
         isApproved: Boolean,
         feedbackComment: String
     ): Flow<Resource<PeerReviewResult>>
-    fun updatePeerReview(id: String, isApproved: Boolean, feedbackComment: String): Flow<Resource<Boolean>>
+    fun updatePeerReview(
+        id: String,
+        submissionId: String,
+        isApproved: Boolean,
+        feedbackComment: String
+    ): Flow<Resource<Boolean>>
     fun deletePeerReview(id: String): Flow<Resource<Boolean>>
 }
