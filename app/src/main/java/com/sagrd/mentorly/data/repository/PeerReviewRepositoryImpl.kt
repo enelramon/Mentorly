@@ -1,10 +1,8 @@
 package com.sagrd.mentorly.data.repository
 
-import android.os.Build
-import androidx.annotation.RequiresApi
 import com.sagrd.mentorly.data.remote.Resource
 import com.sagrd.mentorly.data.remote.dto.CreatePeerReviewRequestDto
-import com.sagrd.mentorly.data.remote.dto.SubmitPeerReviewRequestDto
+import com.sagrd.mentorly.data.remote.dto.UpdatePeerReviewDto
 import com.sagrd.mentorly.data.remote.remotedatasource.PeerReviewRemoteDataSource
 import com.sagrd.mentorly.domain.model.PeerReview
 import com.sagrd.mentorly.domain.model.PeerReviewResult
@@ -32,7 +30,6 @@ class PeerReviewRepositoryImpl @Inject constructor(
             .onFailure { emit(Resource.Error(it.message ?: "Error desconocido")) }
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
     override fun submitReview(
         submissionId: String,
         reviewerStudentId: String,
@@ -54,13 +51,11 @@ class PeerReviewRepositoryImpl @Inject constructor(
 
     override fun updatePeerReview(
         id: String,
-        submissionId: String,
         isApproved: Boolean,
         feedbackComment: String
     ): Flow<Resource<Boolean>> = flow {
         emit(Resource.Loading())
-        val dto = SubmitPeerReviewRequestDto(
-            submissionId = submissionId,
+        val dto = UpdatePeerReviewDto(
             isApproved = isApproved,
             feedbackComment = feedbackComment
         )
