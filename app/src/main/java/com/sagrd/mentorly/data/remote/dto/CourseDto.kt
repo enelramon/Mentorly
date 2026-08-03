@@ -4,13 +4,13 @@ data class CreateCourseDto(
     val title: String,
     val description: String,
     val createdByAdminId: String,
-    val requieredPeerReviews: Int
+    val requiredPeerReviews: Int
 )
 
 data class UpdateCourseDto(
     val title: String,
     val description: String,
-    val requieredPeerReviews: Int
+    val requiredPeerReviews: Int
 )
 
 data class CourseDto(
@@ -19,6 +19,6 @@ data class CourseDto(
     val description: String,
     val createdByAdminId: String,
     val isPublished: Boolean,
-    val requieredPeerReviews: Int,
+    val requiredPeerReviews: Int,
     val createdAt: String
 )
