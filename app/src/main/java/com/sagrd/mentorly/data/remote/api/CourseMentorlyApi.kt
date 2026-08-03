@@ -1,7 +1,15 @@
 package com.sagrd.mentorly.data.remote.api
 
+import com.sagrd.mentorly.data.remote.dto.ActivityDto
 import com.sagrd.mentorly.data.remote.dto.CourseDto
+import com.sagrd.mentorly.data.remote.dto.CourseImageDto
+import com.sagrd.mentorly.data.remote.dto.CourseUnitDto
+import com.sagrd.mentorly.data.remote.dto.CreateActivityDto
 import com.sagrd.mentorly.data.remote.dto.CreateCourseDto
+import com.sagrd.mentorly.data.remote.dto.CreateCourseImageDto
+import com.sagrd.mentorly.data.remote.dto.CreateThemeDto
+import com.sagrd.mentorly.data.remote.dto.CreateUnitDto
+import com.sagrd.mentorly.data.remote.dto.ThemeDto
 import com.sagrd.mentorly.data.remote.dto.UpdateCourseDto
 import retrofit2.Response
 import retrofit2.http.Body
@@ -35,4 +43,28 @@ interface CourseMentorlyApi {
     suspend fun deleteCourse(
         @Path("id") id: String
     ): Response<Unit>
+
+    @POST("api/Courses/{id}/units")
+    suspend fun addUnit(
+        @Path("id") courdeId: String,
+        @Body dto: CreateUnitDto
+    ): Response<CourseUnitDto>
+
+    @POST("api/Courses/units/{unitId}/themes")
+    suspend fun addTheme(
+        @Path("unitId") unitId: String,
+        @Body dto: CreateThemeDto
+    ): Response<ThemeDto>
+
+    @POST("api/Courses/themes/{themeId}/activities")
+    suspend fun addActivity(
+        @Path("themeId") themeId: String,
+        @Body dto: CreateActivityDto
+    ): Response<ActivityDto>
+
+    @POST("api/Courses/{id}/images")
+    suspend fun addCourseImage(
+        @Path("id") id: String,
+        @Body dto: CreateCourseImageDto
+    ): Response<CourseImageDto>
 }
