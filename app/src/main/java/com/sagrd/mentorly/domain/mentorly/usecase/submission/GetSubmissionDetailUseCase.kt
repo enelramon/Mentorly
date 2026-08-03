@@ -6,5 +6,5 @@ import javax.inject.Inject
 class GetSubmissionDetailUseCase @Inject constructor(
     private val repository: SubmissionRepository
 ) {
-    operator fun invoke(id: Int) = repository.getSubmissionDetail(id)
+    operator fun invoke(id: String) = repository.getSubmissionDetail(id)
 }

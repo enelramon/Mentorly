@@ -6,6 +6,6 @@ import javax.inject.Inject
 class GetEnrollmentsUseCase @Inject constructor(
     private val repository: EnrollmentRepository
 ) {
-    operator fun invoke(studentId: Int? = null, courseId: Int? = null) =
+    operator fun invoke(studentId: String? = null, courseId: String? = null) =
         repository.getEnrollments(studentId, courseId)
 }
