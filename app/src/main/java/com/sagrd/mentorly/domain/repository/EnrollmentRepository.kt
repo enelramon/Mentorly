@@ -1,7 +1,7 @@
-package com.sagrd.mentorly.domain.mentorly.repository
+package com.sagrd.mentorly.domain.repository
 
 import com.sagrd.mentorly.data.remote.Resource
-import com.sagrd.mentorly.domain.mentorly.model.Enrollment
+import com.sagrd.mentorly.domain.model.mentorly.model.Enrollment
 import kotlinx.coroutines.flow.Flow
 
 interface EnrollmentRepository {

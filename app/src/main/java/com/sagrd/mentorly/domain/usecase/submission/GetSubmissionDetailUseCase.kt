@@ -1,6 +1,6 @@
-package com.sagrd.mentorly.domain.mentorly.usecase.submission
+package com.sagrd.mentorly.domain.usecase.submission
 
-import com.sagrd.mentorly.domain.mentorly.repository.SubmissionRepository
+import com.sagrd.mentorly.domain.repository.SubmissionRepository
 import javax.inject.Inject
 
 class GetSubmissionDetailUseCase @Inject constructor(

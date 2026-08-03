@@ -1,4 +1,4 @@
-package com.sagrd.mentorly.domain.mentorly.enum
+package com.sagrd.mentorly.domain.enum
 
 enum class SubmissionStatus {
     PENDING, APPROVED, REJECTED, ESCALATED

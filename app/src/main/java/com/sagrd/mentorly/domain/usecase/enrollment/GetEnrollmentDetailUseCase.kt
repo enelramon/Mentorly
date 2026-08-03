@@ -1,6 +1,6 @@
-package com.sagrd.mentorly.domain.mentorly.usecase.enrollment
+package com.sagrd.mentorly.domain.usecase.enrollment
 
-import com.sagrd.mentorly.domain.mentorly.repository.EnrollmentRepository
+import com.sagrd.mentorly.domain.repository.EnrollmentRepository
 import javax.inject.Inject
 
 class GetEnrollmentDetailUseCase @Inject constructor(

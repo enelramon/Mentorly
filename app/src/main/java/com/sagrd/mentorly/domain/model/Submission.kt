@@ -1,6 +1,6 @@
-package com.sagrd.mentorly.domain.mentorly.model
+package com.sagrd.mentorly.domain.model.mentorly.model
 
-import com.sagrd.mentorly.domain.mentorly.enum.SubmissionStatus
+import com.sagrd.mentorly.domain.enum.SubmissionStatus
 import java.time.OffsetDateTime
 
 
