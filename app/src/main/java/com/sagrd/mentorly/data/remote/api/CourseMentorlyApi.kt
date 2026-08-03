@@ -25,7 +25,6 @@ interface CourseMentorlyApi {
 
     @POST("api/Courses")
     suspend fun createCourse(
-        @Query("adminId") adminId: String,
         @Body dto: CreateCourseDto
     ): Response<CourseDto>
 
