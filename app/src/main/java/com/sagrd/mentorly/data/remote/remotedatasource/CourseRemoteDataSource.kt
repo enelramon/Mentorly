@@ -1,6 +1,6 @@
 package com.sagrd.mentorly.data.remote.remotedatasource
 
-import com.sagrd.mentorly.data.remote.MentorlyApi
+import com.sagrd.mentorly.data.remote.api.CourseMentorlyApi
 import com.sagrd.mentorly.data.remote.dto.CourseDto
 import com.sagrd.mentorly.data.remote.dto.CreateCourseDto
 import com.sagrd.mentorly.data.remote.dto.UpdateCourseDto
@@ -8,7 +8,7 @@ import retrofit2.HttpException
 import javax.inject.Inject
 
 class CourseRemoteDataSource @Inject constructor(
-    private val api: MentorlyApi
+    private val api: CourseMentorlyApi
 ) {
     suspend fun getCourses(): Result<List<CourseDto>> {
         return try {
