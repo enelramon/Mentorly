@@ -9,8 +9,8 @@ data class Enrollment(
     val studentId: String,
     val courseId: String,
     val attemptNumber: Int,
-    val startedAt: OffsetDateTime,
-    val expiresAt: OffsetDateTime,
-    val status: EnrollmentStatus = EnrollmentStatus.ACTIVE,
+    val startedAt: String,
+    val expiresAt: String,
+    val status: String,
     val certificateUrl: String? = null
 )
