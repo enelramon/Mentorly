@@ -9,15 +9,14 @@ data class EnrollmentDto(
     val attemptNumber: Int,
     val startedAt: String,
     val expiresAt: String,
-    val status: EnrollmentStatus,
-    val certificateUrl: String?,
-    val progressPercentage: Double,
-    val completedThemesCount: Int,
-    val approvedSubmissionsCount: Int
+    val status: String,
+    val certificateUrl: String?
 )
 
 data class CreateEnrollmentRequestDto(
-    val courseId: String
+    val studentId: String,
+    val courseId: String,
+    val attemptNumber: Int
 )
 
 data class EnrollmentProgressDto(
