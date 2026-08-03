@@ -1,8 +1,16 @@
 package com.sagrd.mentorly.data.remote.remotedatasource
 
 import com.sagrd.mentorly.data.remote.api.CourseMentorlyApi
+import com.sagrd.mentorly.data.remote.dto.ActivityDto
 import com.sagrd.mentorly.data.remote.dto.CourseDto
+import com.sagrd.mentorly.data.remote.dto.CourseImageDto
+import com.sagrd.mentorly.data.remote.dto.CourseUnitDto
+import com.sagrd.mentorly.data.remote.dto.CreateActivityDto
 import com.sagrd.mentorly.data.remote.dto.CreateCourseDto
+import com.sagrd.mentorly.data.remote.dto.CreateCourseImageDto
+import com.sagrd.mentorly.data.remote.dto.CreateThemeDto
+import com.sagrd.mentorly.data.remote.dto.CreateUnitDto
+import com.sagrd.mentorly.data.remote.dto.ThemeDto
 import com.sagrd.mentorly.data.remote.dto.UpdateCourseDto
 import retrofit2.HttpException
 import javax.inject.Inject
@@ -82,6 +90,66 @@ class CourseRemoteDataSource @Inject constructor(
             Result.failure(Exception("Error de servidor", e))
         } catch (e: Exception) {
             Result.failure(Exception("Error desconocido", e))
+        }
+    }
+
+    suspend fun addUnit(courseId: String, dto: CreateUnitDto): Result<CourseUnitDto> {
+        return try {
+            val response = api.addUnit(courseId, dto)
+            if (!response.isSuccessful) {
+                return Result.failure(Exception("Error de red ${response.code()}"))
+            } else {
+                return Result.success(response.body()!!)
+            }
+        } catch (e: HttpException) {
+            return Result.failure(Exception("Error del servidor: ", e))
+        } catch (e: Exception) {
+            return Result.failure(Exception("Error desconocido: ", e))
+        }
+    }
+
+    suspend fun addTheme(unitId: String, dto: CreateThemeDto): Result<ThemeDto> {
+        return try {
+            val response = api.addTheme(unitId, dto)
+            if (!response.isSuccessful) {
+                return Result.failure(Exception("Error de red: ${response.code()}"))
+            } else {
+                return Result.success(response.body()!!)
+            }
+        } catch (e: HttpException) {
+            return Result.failure(Exception("Error del servidor: ", e))
+        } catch (e: Exception) {
+            return Result.failure(Exception("Error desconocido: ", e))
+        }
+    }
+
+    suspend fun addActivity(courseId: String, dto: CreateActivityDto): Result<ActivityDto> {
+        return try {
+            val response = api.addActivity(courseId, dto)
+            if (!response.isSuccessful) {
+                return Result.failure(Exception("Error de red ${response.code()}"))
+            } else {
+                return Result.success(response.body()!!)
+            }
+        } catch (e: HttpException) {
+            return Result.failure(Exception("Error del servidor: ", e))
+        } catch (e: Exception) {
+            return Result.failure(Exception("Error desconocido: ", e))
+        }
+    }
+
+    suspend fun addCourseImage(courseId: String, dto: CreateCourseImageDto): Result<CourseImageDto> {
+        return try {
+            val response = api.addCourseImage(courseId, dto)
+            if (!response.isSuccessful) {
+                return Result.failure(Exception("Error de red ${response.code()}"))
+            } else {
+                return Result.success(response.body()!!)
+            }
+        } catch (e: HttpException) {
+            return Result.failure(Exception("Error del servidor: ", e))
+        } catch (e: Exception) {
+            return Result.failure(Exception("Error desconocido", e))
         }
     }
 }
