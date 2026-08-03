@@ -3,7 +3,7 @@ package com.sagrd.mentorly.data.remote.api
 import com.sagrd.mentorly.data.remote.dto.CreatePeerReviewRequestDto
 import com.sagrd.mentorly.data.remote.dto.PeerReviewDto
 import com.sagrd.mentorly.data.remote.dto.PeerReviewResultDto
-import com.sagrd.mentorly.data.remote.dto.SubmitPeerReviewRequestDto
+import com.sagrd.mentorly.data.remote.dto.UpdatePeerReviewDto
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.DELETE
@@ -29,7 +29,7 @@ interface PeerReviewMentorlyApi {
     @PUT("api/PeerReviews/{id}")
     suspend fun updatePeerReview(
         @Path("id") id: String,
-        @Body dto: SubmitPeerReviewRequestDto
+        @Body dto: UpdatePeerReviewDto
     ): Response<Unit>
 
     @DELETE("api/PeerReviews/{id}")
