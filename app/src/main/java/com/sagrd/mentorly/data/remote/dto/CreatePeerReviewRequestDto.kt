@@ -1,10 +1,9 @@
 package com.sagrd.mentorly.data.remote.dto
 
-data class PeerReviewDto(
-    val id: String,
+data class CreatePeerReviewRequestDto (
     val submissionId: String,
     val reviewerStudentId: String,
     val isApproved: Boolean,
     val feedbackComment: String,
-    val createdAt: String
+    val createdAtUtc: String
 )

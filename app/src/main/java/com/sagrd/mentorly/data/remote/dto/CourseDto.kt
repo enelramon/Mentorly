@@ -2,19 +2,6 @@ package com.sagrd.mentorly.data.remote.dto
 
 import com.sagrd.mentorly.domain.model.Course
 
-data class CreateCourseDto(
-    val title: String,
-    val description: String,
-    val createdByAdminId: String,
-    val requiredPeerReviews: Int
-)
-
-data class UpdateCourseDto(
-    val title: String,
-    val description: String,
-    val requiredPeerReviews: Int,
-)
-
 data class CourseDto(
     val id: String,
     val title: String,
