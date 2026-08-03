@@ -4,7 +4,7 @@ import com.sagrd.mentorly.data.remote.api.PeerReviewMentorlyApi
 import com.sagrd.mentorly.data.remote.dto.CreatePeerReviewRequestDto
 import com.sagrd.mentorly.data.remote.dto.PeerReviewDto
 import com.sagrd.mentorly.data.remote.dto.PeerReviewResultDto
-import com.sagrd.mentorly.data.remote.dto.SubmitPeerReviewRequestDto
+import com.sagrd.mentorly.data.remote.dto.UpdatePeerReviewDto
 import javax.inject.Inject
 
 class PeerReviewRemoteDataSource @Inject constructor(
@@ -49,7 +49,7 @@ class PeerReviewRemoteDataSource @Inject constructor(
         }
     }
 
-    suspend fun updatePeerReview(id: String, dto: SubmitPeerReviewRequestDto): Result<Boolean> {
+    suspend fun updatePeerReview(id: String, dto: UpdatePeerReviewDto): Result<Boolean> {
         return try {
             val response = api.updatePeerReview(id, dto)
             if (!response.isSuccessful) {
