@@ -1,6 +1,6 @@
 package com.sagrd.mentorly.data.remote.dto
 
-import com.sagrd.mentorly.domain.mentorly.enum.SubmissionStatus
+import com.sagrd.mentorly.domain.enum.SubmissionStatus
 
 data class CreatePeerReviewRequestDto (
     val submissionId: String,

@@ -11,78 +11,77 @@ class CourseRemoteDataSource @Inject constructor(
     private val api: MentorlyApi
 ) {
     suspend fun getCourses(): Result<List<CourseDto>> {
-        try {
+        return try {
             val response = api.getCourses()
             if (!response.isSuccessful) {
-                return Result.failure(Exception("Error de red ${response.code()}"))
+                Result.failure(Exception("Error de red ${response.code()}"))
             } else {
-                return Result.success(response.body()!!)
+                Result.success(response.body()!!)
             }
         } catch (e: HttpException) {
-            return Result.failure(Exception("Error del servidor: ", e))
+            Result.failure(Exception("Error del servidor: ", e))
         } catch (e: Exception) {
-            return Result.failure(Exception("Error desconocido: ", e))
+            Result.failure(Exception("Error desconocido: ", e))
         }
     }
 
     suspend fun getCourseDetail(id: String): Result<CourseDto> {
-        try {
+        return try {
             val response = api.getCourseDetail(id)
             if (!response.isSuccessful) {
-                return Result.failure(Exception("Error de red ${response.code()}"))
+                Result.failure(Exception("Error de red ${response.code()}"))
             } else {
-                return Result.success(response.body()!!)
+                Result.success(response.body()!!)
             }
         } catch (e: HttpException) {
-            return Result.failure(Exception("Error del servidor", e))
+            Result.failure(Exception("Error del servidor", e))
         } catch (e: Exception) {
-            return Result.failure(Exception("Error desconocido", e))
+            Result.failure(Exception("Error desconocido", e))
         }
     }
 
     suspend fun createCourse(dto: CreateCourseDto): Result<CourseDto> {
-        try {
+        return try {
             val response = api.createCourse(dto)
             if (!response.isSuccessful) {
-                return Result.failure(Exception("Error de red ${response.code()}"))
+                Result.failure(Exception("Error de red ${response.code()}"))
             } else {
-                return Result.success(response.body()!!)
+                Result.success(response.body()!!)
             }
         } catch (e: HttpException) {
-            return Result.failure(Exception("Error del servidor", e))
+            Result.failure(Exception("Error del servidor", e))
         } catch (e: Exception) {
-            return Result.failure(Exception("Error desconocido", e))
+            Result.failure(Exception("Error desconocido", e))
         }
     }
 
     suspend fun updateCourse(id: String, dto: UpdateCourseDto): Result<Unit> {
-        try {
+        return try {
             val response = api.updateCourse(id, dto)
             if (!response.isSuccessful) {
-                return Result.failure(Exception("Error de red ${response.code()}"))
+                Result.failure(Exception("Error de red ${response.code()}"))
             } else {
-                return Result.success(Unit)
+                Result.success(Unit)
             }
         } catch (e: HttpException) {
-            return Result.failure(Exception("Error de servidor", e))
+            Result.failure(Exception("Error de servidor", e))
         } catch (e: Exception) {
-            return Result.failure(Exception("Error desconocido", e))
+            Result.failure(Exception("Error desconocido", e))
         }
     }
 
     suspend fun deleteCourse(id: String): Result<Unit> {
-        try {
+        return try {
             val response = api.deleteCourse(id)
             if (!response.isSuccessful) {
-                return Result.failure(Exception("Error de red ${response.code()}"))
+                Result.failure(Exception("Error de red ${response.code()}"))
             } else {
-                return Result.success(Unit)
+                Result.success(Unit)
             }
         } catch (e: HttpException) {
-            return Result.failure(Exception("Error de servidor", e))
+            Result.failure(Exception("Error de servidor", e))
         } catch (e: Exception) {
-            return Result.failure(Exception("Error desconocido", e))
+            Result.failure(Exception("Error desconocido", e))
         }
     }
-
 }

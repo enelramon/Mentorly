@@ -1,6 +1,6 @@
 package com.sagrd.mentorly.data.remote.dto
 
-import com.sagrd.mentorly.domain.mentorly.enum.EnrollmentStatus
+import com.sagrd.mentorly.domain.enum.EnrollmentStatus
 
 data class CreateEnrollmentRequestDto (
     val studentId: String,
