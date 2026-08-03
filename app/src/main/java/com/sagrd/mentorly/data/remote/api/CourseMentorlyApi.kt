@@ -1,15 +1,7 @@
 package com.sagrd.mentorly.data.remote.api
 
-import com.sagrd.mentorly.data.remote.dto.ActivityDto
 import com.sagrd.mentorly.data.remote.dto.CourseDto
-import com.sagrd.mentorly.data.remote.dto.CourseImageDto
-import com.sagrd.mentorly.data.remote.dto.CourseUnitDto
-import com.sagrd.mentorly.data.remote.dto.CreateActivityDto
 import com.sagrd.mentorly.data.remote.dto.CreateCourseDto
-import com.sagrd.mentorly.data.remote.dto.CreateCourseImageDto
-import com.sagrd.mentorly.data.remote.dto.CreateThemeDto
-import com.sagrd.mentorly.data.remote.dto.CreateUnitDto
-import com.sagrd.mentorly.data.remote.dto.ThemeDto
 import com.sagrd.mentorly.data.remote.dto.UpdateCourseDto
 import retrofit2.Response
 import retrofit2.http.Body
