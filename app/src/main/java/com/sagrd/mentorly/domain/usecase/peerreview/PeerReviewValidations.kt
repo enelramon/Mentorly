@@ -1,4 +1,4 @@
-package com.sagrd.mentorly.domain.peerreview.usecase
+package com.sagrd.mentorly.domain.usecase.peerreview
 
 data class PeerReviewValidation(
     val isValid: Boolean,

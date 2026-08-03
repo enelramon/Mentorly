@@ -1,6 +1,6 @@
-package com.sagrd.mentorly.domain.student.usecase
+package com.sagrd.mentorly.domain.usecase.student
 
-import com.sagrd.mentorly.domain.student.repository.StudentRepository
+import com.sagrd.mentorly.domain.repository.StudentRepository
 import javax.inject.Inject
 
 class GetStudentByIdUseCase @Inject constructor(

@@ -1,4 +1,4 @@
-package com.sagrd.mentorly.domain.student.model
+package com.sagrd.mentorly.domain.model
 
 data class Student(
     val id: String,

@@ -1,4 +1,4 @@
-package com.sagrd.mentorly.domain.peerreview.model
+package com.sagrd.mentorly.domain.model
 
 data class PeerReview(
     val id: String,

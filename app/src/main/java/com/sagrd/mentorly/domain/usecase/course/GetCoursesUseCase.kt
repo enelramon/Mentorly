@@ -1,6 +1,6 @@
-package com.sagrd.mentorly.domain.course.usecase
+package com.sagrd.mentorly.domain.usecase.course
 
-import com.sagrd.mentorly.domain.course.repository.CourseRepository
+import com.sagrd.mentorly.domain.repository.CourseRepository
 import javax.inject.Inject
 
 class GetCoursesUseCase @Inject constructor(

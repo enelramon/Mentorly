@@ -1,6 +1,6 @@
-package com.sagrd.mentorly.domain.peerreview.usecase
+package com.sagrd.mentorly.domain.usecase.peerreview
 
-import com.sagrd.mentorly.domain.peerreview.repository.PeerReviewRepository
+import com.sagrd.mentorly.domain.repository.PeerReviewRepository
 import javax.inject.Inject
 
 class SubmitPeerReviewUseCase @Inject constructor(

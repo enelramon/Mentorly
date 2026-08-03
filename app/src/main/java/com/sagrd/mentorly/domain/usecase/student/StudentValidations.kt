@@ -1,4 +1,4 @@
-package com.sagrd.mentorly.domain.student.usecase
+package com.sagrd.mentorly.domain.usecase.student
 
 data class StudentValidation(
     val isValid: Boolean,
