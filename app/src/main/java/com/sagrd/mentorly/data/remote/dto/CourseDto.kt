@@ -1,5 +1,7 @@
 package com.sagrd.mentorly.data.remote.dto
 
+import com.sagrd.mentorly.domain.model.Course
+
 data class CreateCourseDto(
     val title: String,
     val description: String,
@@ -11,8 +13,6 @@ data class UpdateCourseDto(
     val title: String,
     val description: String,
     val requiredPeerReviews: Int,
-    val images: List<CreateCourseImageDto>?,
-    val units: List<CreateUnitDto>?
 )
 
 data class CourseDto(
@@ -23,4 +23,14 @@ data class CourseDto(
     val isPublished: Boolean,
     val requiredPeerReviews: Int,
     val createdAt: String
-)
+) {
+    fun toDomain() = Course (
+        id = id,
+        title = title,
+        description = description,
+        createdByAdminId = createdByAdminId,
+        isPublished = isPublished,
+        requiredPeerReviews = requiredPeerReviews,
+        createdAt = createdAt
+    )
+}

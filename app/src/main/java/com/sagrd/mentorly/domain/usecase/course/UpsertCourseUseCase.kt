@@ -10,10 +10,11 @@ class UpsertCourseUseCase @Inject constructor(
         id: String?,
         title: String,
         description: String,
+        createdByAdminId: String,
         requiredPeerReviews: Int
     ) =
         if (id.isNullOrBlank())
-            repository.createCourse(title, description, requiredPeerReviews)
+            repository.createCourse(title, description, createdByAdminId, requiredPeerReviews)
         else
             repository.updateCourse(id, title, description, requiredPeerReviews)
 }
