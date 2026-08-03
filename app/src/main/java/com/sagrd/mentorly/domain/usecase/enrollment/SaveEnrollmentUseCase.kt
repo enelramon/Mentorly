@@ -1,6 +1,6 @@
 package com.sagrd.mentorly.domain.usecase.enrollment
 
-import com.sagrd.mentorly.domain.model.mentorly.model.Enrollment
+import com.sagrd.mentorly.domain.model.Enrollment
 import com.sagrd.mentorly.domain.repository.EnrollmentRepository
 import javax.inject.Inject
 

@@ -1,7 +1,7 @@
 package com.sagrd.mentorly.domain.repository
 
 import com.sagrd.mentorly.data.remote.Resource
-import com.sagrd.mentorly.domain.model.mentorly.model.Submission
+import com.sagrd.mentorly.domain.model.Submission
 import kotlinx.coroutines.flow.Flow
 
 interface SubmissionRepository {

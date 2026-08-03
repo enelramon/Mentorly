@@ -1,6 +1,6 @@
 package com.sagrd.mentorly.domain.usecase.submission
 
-import com.sagrd.mentorly.domain.model.mentorly.model.Submission
+import com.sagrd.mentorly.domain.model.Submission
 import com.sagrd.mentorly.domain.repository.SubmissionRepository
 import javax.inject.Inject
 
