@@ -47,28 +47,4 @@ interface CourseMentorlyApi {
     suspend fun deleteCourse(
         @Path("id") id: String
     ): Response<Unit>
-
-    @POST("api/Courses/{id}/units")
-    suspend fun addUnit(
-        @Path("id") courseId: String,
-        @Body dto: CreateUnitDto
-    ): Response<CourseUnitDto>
-
-    @POST("api/Courses/units/{unitId}/themes")
-    suspend fun addTheme(
-        @Path("unitId") unitId: String,
-        @Body dto: CreateThemeDto
-    ): Response<ThemeDto>
-
-    @POST("api/Courses/themes/{themeId}/activities")
-    suspend fun addActivity(
-        @Path("themeId") themeId: String,
-        @Body dto: CreateActivityDto
-    ): Response<ActivityDto>
-
-    @POST("api/Courses/{id}/images")
-    suspend fun addCourseImage(
-        @Path("id") id: String,
-        @Body dto: CreateCourseImageDto
-    ): Response<CourseImageDto>
 }
