@@ -20,14 +20,6 @@ data class SubmissionDto(
     val requiredApprovalCounts: Int
 )
 
-data class PeerReviewDto(
-    val id: String,
-    val submissionId: String,
-    val isApproved: Boolean,
-    val feedbackComment: String,
-    val createdAt: String
-)
-
 data class SubmitPeerReviewRequestDto(
     val submissionId: String,
     val isApproved: Boolean,
