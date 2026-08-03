@@ -1,7 +1,8 @@
 package com.sagrd.mentorly.data.remote.api
 
+import com.sagrd.mentorly.data.remote.dto.CreateSubmissionDto
 import com.sagrd.mentorly.data.remote.dto.SubmissionDto
-import com.sagrd.mentorly.data.remote.dto.SubmitExerciseRequestDto
+import com.sagrd.mentorly.data.remote.dto.UpdateSubmissionDto
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.DELETE
@@ -13,11 +14,14 @@ import retrofit2.http.Query
 
 interface SubmissionMentorlyApi {
     @GET("api/Submissions")
-    suspend fun getSubmissions(): Response<List<SubmissionDto>>
+    suspend fun getSubmissions(
+        @Query("enrollmentId") enrollmentId: String? = null,
+        @Query("activityId") activityId: String? = null
+    ): Response<List<SubmissionDto>>
 
     @POST("api/Submissions")
     suspend fun submitExercise(
-        @Body dto: SubmitExerciseRequestDto
+        @Body dto: CreateSubmissionDto
     ): Response<SubmissionDto>
 
     @GET("api/Submissions/{id}")
@@ -28,7 +32,7 @@ interface SubmissionMentorlyApi {
     @PUT("api/Submissions/{id}")
     suspend fun updateSubmission(
         @Path("id") id: String,
-        @Body dto: SubmitExerciseRequestDto
+        @Body dto: UpdateSubmissionDto
     ): Response<Unit>
 
     @DELETE("api/Submissions/{id}")
