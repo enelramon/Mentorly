@@ -1,4 +1,4 @@
-package com.sagrd.mentorly.data.mentorly
+package com.sagrd.mentorly.data.remote
 sealed class Resource<T>(
     val data: T? = null,
     val message: String? = null
