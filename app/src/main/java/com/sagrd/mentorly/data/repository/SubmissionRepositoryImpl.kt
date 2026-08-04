@@ -19,7 +19,7 @@ class SubmissionRepositoryImpl @Inject constructor(
         activityId: String?
     ): Flow<Resource<List<Submission>>> = flow {
         emit(Resource.Loading())
-        val result = remoteDataSource.getSubmissions(enrollmentId, activityId)
+        remoteDataSource.getSubmissions()
             .onSuccess { dto ->
                 emit(Resource.Success(dto.map { it.toDomain() }))
             }
@@ -30,7 +30,7 @@ class SubmissionRepositoryImpl @Inject constructor(
 
     override fun getSubmissionDetail(id: String): Flow<Resource<Submission>> = flow {
         emit(Resource.Loading())
-        val result = remoteDataSource.getSubmissionDetail(id)
+        remoteDataSource.getSubmissionDetail(id)
             .onSuccess {
                 emit(Resource.Success(it.toDomain()))
             }

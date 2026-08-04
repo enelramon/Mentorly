@@ -4,8 +4,8 @@ import com.sagrd.mentorly.domain.model.Submission
 import com.sagrd.mentorly.domain.repository.SubmissionRepository
 import javax.inject.Inject
 
-class SaveSubmissionUseCase @Inject constructor(
+class CreateSubmissionUseCase @Inject constructor(
     private val repository: SubmissionRepository
 ) {
-    operator fun invoke(submission: Submission) = repository.saveSubmission(submission)
+    operator fun invoke(submission: Submission) = repository.createSubmission(submission)
 }
