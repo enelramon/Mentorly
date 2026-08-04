@@ -1,7 +1,7 @@
 package com.sagrd.mentorly.data.remote.remotedatasource
 
 import com.sagrd.mentorly.data.remote.api.EnrollmentMentorlyApi
-import com.sagrd.mentorly.data.remote.dto.CreateEnrollmentRequestDto
+import com.sagrd.mentorly.data.remote.dto.CreateEnrollmentDto
 import com.sagrd.mentorly.data.remote.dto.EnrollmentDto
 import retrofit2.HttpException
 import javax.inject.Inject
@@ -9,12 +9,9 @@ import javax.inject.Inject
 class EnrollmentRemoteDataSource @Inject constructor(
     private val api: EnrollmentMentorlyApi
 ) {
-    suspend fun getEnrollments(
-        studentId: String? = null,
-        courseId: String? = null
-    ): Result<List<EnrollmentDto>> {
+    suspend fun getEnrollments(): Result<List<EnrollmentDto>> {
         return try {
-            val response = api.getEnrollments(studentId, courseId)
+            val response = api.getEnrollments()
             if (!response.isSuccessful) {
                 Result.failure(Exception("Error de red ${response.code()}"))
             } else {
@@ -43,7 +40,7 @@ class EnrollmentRemoteDataSource @Inject constructor(
     }
 
     suspend fun createEnrollment(
-        dto: CreateEnrollmentRequestDto
+        dto: CreateEnrollmentDto
     ): Result<EnrollmentDto> {
         return try {
             val response = api.createEnrollment(dto)
