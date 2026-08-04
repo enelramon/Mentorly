@@ -5,9 +5,7 @@ import com.sagrd.mentorly.domain.model.Course
 import kotlinx.coroutines.flow.Flow
 
 interface CourseRepository {
-    fun getCourses(
-        publishedOnly: Boolean
-    ): Flow<Resource<List<Course>>>
+    fun getCourses(): Flow<Resource<List<Course>>>
 
     fun getCourseDetail(
         id: String
