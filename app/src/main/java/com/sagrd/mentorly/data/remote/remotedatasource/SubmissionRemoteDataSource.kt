@@ -10,13 +10,13 @@ import javax.inject.Inject
 class SubmissionRemoteDataSource @Inject constructor(
     private val api: SubmissionMentorlyApi
 ) {
-    suspend fun getSubmissions(enrollmentId: String?, activityId: String?): Result<List<SubmissionDto>> {
+    suspend fun getSubmissions(): Result<List<SubmissionDto>> {
         return try {
-            val response = api.getSubmissions(enrollmentId, activityId)
+            val response = api.getSubmissions()
             if (!response.isSuccessful) {
                 Result.failure(Exception("Error de red: ${response.code()}"))
             } else {
-                Result.success(response.body() ?: emptyList())
+                Result.success(response.body()!!)
             }
         } catch (e: HttpException) {
             Result.failure(Exception("Error del servidor", e))
@@ -31,9 +31,7 @@ class SubmissionRemoteDataSource @Inject constructor(
             if (!response.isSuccessful) {
                 Result.failure(Exception("Error de red: ${response.code()}"))
             } else {
-                val body = response.body()
-                if (body != null) Result.success(body)
-                else Result.failure(Exception("Respuesta vacía del servidor"))
+                Result.success(response.body()!!)
             }
         } catch (e: HttpException) {
             Result.failure(Exception("Error del servidor", e))
@@ -42,15 +40,13 @@ class SubmissionRemoteDataSource @Inject constructor(
         }
     }
 
-    suspend fun submitExercise(dto: CreateSubmissionDto): Result<SubmissionDto> {
+    suspend fun createSubmission(dto: CreateSubmissionDto): Result<SubmissionDto> {
         return try {
-            val response = api.submitExercise(dto)
+            val response = api.createSubmission(dto)
             if (!response.isSuccessful) {
                 Result.failure(Exception("Error de red: ${response.code()}"))
             } else {
-                val body = response.body()
-                if (body != null) Result.success(body)
-                else Result.failure(Exception("Respuesta vacía del servidor"))
+                Result.success(response.body()!!)
             }
         } catch (e: HttpException) {
             Result.failure(Exception("Error del servidor", e))
