@@ -13,19 +13,19 @@ import java.time.Instant
 import javax.inject.Inject
 
 class PeerReviewRepositoryImpl @Inject constructor(
-    private val peerReviewRemoteDataSource: PeerReviewRemoteDataSource
+    private val remoteDataSource: PeerReviewRemoteDataSource
 ) : PeerReviewRepository {
 
     override fun getPeerReviews(): Flow<Resource<List<PeerReview>>> = flow {
         emit(Resource.Loading())
-        peerReviewRemoteDataSource.getPeerReviews()
+        remoteDataSource.getPeerReviews()
             .onSuccess { emit(Resource.Success(it.map { dto -> dto.toDomain() })) }
             .onFailure { emit(Resource.Error(it.message ?: "Error desconocido")) }
     }
 
     override fun getPeerReview(id: String): Flow<Resource<PeerReview>> = flow {
         emit(Resource.Loading())
-        peerReviewRemoteDataSource.getPeerReview(id)
+        remoteDataSource.getPeerReview(id)
             .onSuccess { emit(Resource.Success(it.toDomain())) }
             .onFailure { emit(Resource.Error(it.message ?: "Error desconocido")) }
     }
@@ -44,7 +44,7 @@ class PeerReviewRepositoryImpl @Inject constructor(
             feedbackComment = feedbackComment,
             createdAtUtc = Instant.now().toString()
         )
-        peerReviewRemoteDataSource.submitReview(dto)
+        remoteDataSource.submitReview(dto)
             .onSuccess { emit(Resource.Success(it.toDomain())) }
             .onFailure { emit(Resource.Error(it.message ?: "Error desconocido")) }
     }
@@ -59,14 +59,14 @@ class PeerReviewRepositoryImpl @Inject constructor(
             isApproved = isApproved,
             feedbackComment = feedbackComment
         )
-        peerReviewRemoteDataSource.updatePeerReview(id, dto)
+        remoteDataSource.updatePeerReview(id, dto)
             .onSuccess { emit(Resource.Success(it)) }
             .onFailure { emit(Resource.Error(it.message ?: "Error desconocido")) }
     }
 
     override fun deletePeerReview(id: String): Flow<Resource<Boolean>> = flow {
         emit(Resource.Loading())
-        peerReviewRemoteDataSource.deletePeerReview(id)
+        remoteDataSource.deletePeerReview(id)
             .onSuccess { emit(Resource.Success(it)) }
             .onFailure { emit(Resource.Error(it.message ?: "Error desconocido")) }
     }
