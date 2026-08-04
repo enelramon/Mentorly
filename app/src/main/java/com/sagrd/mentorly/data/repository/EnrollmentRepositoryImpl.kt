@@ -1,7 +1,7 @@
 package com.sagrd.mentorly.data.repository
 
 import com.sagrd.mentorly.data.remote.Resource
-import com.sagrd.mentorly.data.remote.dto.CreateEnrollmentRequestDto
+import com.sagrd.mentorly.data.remote.dto.CreateEnrollmentDto
 import com.sagrd.mentorly.data.remote.remotedatasource.EnrollmentRemoteDataSource
 import com.sagrd.mentorly.domain.model.Enrollment
 import com.sagrd.mentorly.domain.repository.EnrollmentRepository
@@ -17,7 +17,7 @@ class EnrollmentRepositoryImpl @Inject constructor(
         courseId: String?
     ): Flow<Resource<List<Enrollment>>> = flow {
         emit(Resource.Loading())
-        remoteDataSource.getEnrollments(studentId, courseId)
+        remoteDataSource.getEnrollments()
             .onSuccess { dto ->
                 emit(Resource.Success(dto.map { it.toDomain() }))
             }
@@ -39,10 +39,10 @@ class EnrollmentRepositoryImpl @Inject constructor(
 
     override fun createEnrollment(enrollment: Enrollment): Flow<Resource<Enrollment>> = flow {
         emit(Resource.Loading())
-        val dto = CreateEnrollmentRequestDto(
+        val dto = CreateEnrollmentDto(
             studentId = enrollment.studentId,
             courseId = enrollment.courseId,
-            startedAtUtc = enrollment.startedAt
+            attemptNumber = enrollment.attemptNumber
         )
 
         remoteDataSource.createEnrollment(dto)
