@@ -42,7 +42,7 @@ class EnrollmentRepositoryImpl @Inject constructor(
         val dto = CreateEnrollmentRequestDto(
             studentId = enrollment.studentId,
             courseId = enrollment.courseId,
-            attemptNumber = enrollment.attemptNumber
+            startedAtUtc = enrollment.startedAt
         )
 
         remoteDataSource.createEnrollment(dto)
