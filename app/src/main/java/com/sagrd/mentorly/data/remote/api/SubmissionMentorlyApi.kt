@@ -10,17 +10,13 @@ import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.PUT
 import retrofit2.http.Path
-import retrofit2.http.Query
 
 interface SubmissionMentorlyApi {
     @GET("api/Submissions")
-    suspend fun getSubmissions(
-        @Query("enrollmentId") enrollmentId: String? = null,
-        @Query("activityId") activityId: String? = null
-    ): Response<List<SubmissionDto>>
+    suspend fun getSubmissions(): Response<List<SubmissionDto>>
 
     @POST("api/Submissions")
-    suspend fun submitExercise(
+    suspend fun createSubmission(
         @Body dto: CreateSubmissionDto
     ): Response<SubmissionDto>
 
