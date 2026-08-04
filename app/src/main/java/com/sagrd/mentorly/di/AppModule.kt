@@ -1,19 +1,11 @@
 package com.sagrd.mentorly.di
 
-import android.content.Context
-import androidx.credentials.CredentialManager
-import com.google.firebase.Firebase
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.auth
 import com.sagrd.mentorly.data.remote.api.CourseMentorlyApi
 import com.sagrd.mentorly.data.remote.api.SubmissionMentorlyApi
-import com.sagrd.mentorly.data.remote.dto.EnumMoshiAdapters
 import com.sagrd.mentorly.data.remote.remotedatasource.CourseRemoteDataSource
 import com.sagrd.mentorly.data.remote.remotedatasource.SubmissionRemoteDataSource
-import com.sagrd.mentorly.data.repository.AuthRepositoryImpl
 import com.sagrd.mentorly.data.repository.CourseRepositoryImpl
 import com.sagrd.mentorly.data.repository.SubmissionRepositoryImpl
-import com.sagrd.mentorly.domain.repository.AuthRepository
 import com.sagrd.mentorly.domain.repository.CourseRepository
 import com.sagrd.mentorly.domain.repository.SubmissionRepository
 import com.squareup.moshi.KotlinJsonAdapterFactory
@@ -21,7 +13,6 @@ import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
@@ -34,7 +25,6 @@ object AppModule {
     @Singleton
     fun provideMoshi(): Moshi {
         return Moshi.Builder()
-            .add(EnumMoshiAdapters())
             .add(KotlinJsonAdapterFactory())
             .build()
     }

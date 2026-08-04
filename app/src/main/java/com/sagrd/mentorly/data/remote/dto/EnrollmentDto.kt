@@ -1,5 +1,6 @@
 package com.sagrd.mentorly.data.remote.dto
 
+import com.sagrd.mentorly.domain.enum.EnrollmentStatus
 import com.sagrd.mentorly.domain.model.Enrollment
 
 data class EnrollmentDto(
@@ -19,7 +20,7 @@ data class EnrollmentDto(
         attemptNumber = attemptNumber,
         startedAt = startedAt,
         expiresAt = expiresAt,
-        status = status,
+        status = EnrollmentStatus.fromValue(status),
         certificateUrl = certificateUrl
     )
 }

@@ -7,17 +7,15 @@ data class PeerReviewDto(
     val submissionId: String,
     val reviewerStudentId: String,
     val isApproved: Boolean,
-    val feedbackComment: String,
+    val feedbackComment: String?,
     val createdAt: String
 ) {
-    fun toDomain(): PeerReview {
-        return PeerReview(
-            id = id,
-            submissionId = submissionId,
-            reviewerStudentId = reviewerStudentId,
-            isApproved = isApproved,
-            feedbackComment = feedbackComment,
-            createdAt = createdAt
-        )
-    }
+    fun toDomain() = PeerReview(
+        id = id,
+        submissionId = submissionId,
+        reviewerStudentId = reviewerStudentId,
+        isApproved = isApproved,
+        feedbackComment = feedbackComment,
+        createdAt = createdAt
+    )
 }
