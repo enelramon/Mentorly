@@ -10,8 +10,7 @@ interface SubmissionRepository {
         activityId: String? = null
     ): Flow<Resource<List<Submission>>>
     fun getSubmissionDetail(id: String): Flow<Resource<Submission>>
-    fun saveSubmission(submission: Submission): Flow<Resource<Submission>>
-    fun updateSubmission(id: String, activityId: String, evidenceUrl: String): Flow<Resource<Boolean>>
-
+    fun createSubmission(submission: Submission): Flow<Resource<Submission>>
+    fun updateSubmission(id: String, evidenceUrl: String): Flow<Resource<Boolean>>
     fun deleteSubmission(id: String): Flow<Resource<Boolean>>
 }
