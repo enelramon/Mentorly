@@ -5,6 +5,6 @@ data class PeerReview(
     val submissionId: String,
     val reviewerStudentId: String,
     val isApproved: Boolean,
-    val feedbackComment: String,
+    val feedbackComment: String?,
     val createdAt: String
 )
