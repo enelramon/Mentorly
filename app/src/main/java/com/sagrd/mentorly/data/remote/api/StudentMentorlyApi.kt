@@ -1,6 +1,8 @@
 package com.sagrd.mentorly.data.remote.api
 
-import com.sagrd.mentorly.data.remote.dto.UserDto
+import com.sagrd.mentorly.data.remote.dto.CreateStudentDto
+import com.sagrd.mentorly.data.remote.dto.StudentDto
+import com.sagrd.mentorly.data.remote.dto.UpdateStudentDto
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.DELETE
@@ -11,22 +13,22 @@ import retrofit2.http.Path
 
 interface StudentMentorlyApi {
     @GET("api/Students")
-    suspend fun getStudents(): Response<List<UserDto>>
+    suspend fun getStudents(): Response<List<StudentDto>>
 
     @POST("api/Students")
     suspend fun createStudent(
-        @Body dto: UserDto
-    ): Response<UserDto>
+        @Body dto: CreateStudentDto
+    ): Response<StudentDto>
 
     @GET("api/Students/{id}")
     suspend fun getStudent(
         @Path("id") id: String
-    ): Response<UserDto>
+    ): Response<StudentDto>
 
     @PUT("api/Students/{id}")
     suspend fun updateStudent(
         @Path("id") id: String,
-        @Body dto: UserDto
+        @Body dto: UpdateStudentDto
     ): Response<Unit>
 
     @DELETE("api/Students/{id}")
