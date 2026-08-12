@@ -14,7 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.sagrd.mentorly.domain.model.community.CourseMember
 import com.sagrd.mentorly.ui.theme.MentorlyTheme
 
@@ -23,7 +23,7 @@ fun CourseMembersScreen(
     courseId: String,
     onBackClick: () -> Unit,
     onStudentClick: ((String) -> Unit)? = null,
-    viewModel: CourseMembersViewModel = hiltViewModel()
+    viewModel: CourseMembersViewModel = hiltViewModel(),
 ) {
     val state by viewModel.state.collectAsState()
 
@@ -35,7 +35,7 @@ fun CourseMembersScreen(
         state = state,
         onEvent = viewModel::onEvent,
         onBackClick = onBackClick,
-        onStudentClick = { studentId -> onStudentClick?.invoke(studentId) }
+        onStudentClick = { studentId -> onStudentClick?.invoke(studentId) },
     )
 }
 
